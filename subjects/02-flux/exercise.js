@@ -15,13 +15,21 @@ class Counter extends React.Component {
     this.state = { number: 0 }; 
   }
 
+  increment = () => {
+    this.setState({number: this.state.number + 1});
+  }
+
+  decrement = () => {
+    this.setState({number: this.state.number - 1});
+  }
+
   render() {
     return (
       <div style={styles.div}>
         <h3> I am counter #{this.props.id} </h3>
-        <span  style={styles.span}> + </span> 
+        <span  style={styles.span} onClick={this.increment}> + </span> 
         <span style={styles.span}> {this.state.number} </span> 
-        <span style={styles.span}> - </span>
+        <span style={styles.span} onClick={this.decrement}> - </span>
       </div>
     );
   }
@@ -38,6 +46,7 @@ class App extends React.Component {
       <div>
         <h1> What the flux? </h1>
         <Counter id="1"/>
+        <Counter id="2"/>
       </div>
       );
   }
