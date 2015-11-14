@@ -8,11 +8,15 @@ class App extends React.Component {
     toggle: false};
   }
 
+  toggle = () => {
+    this.setState({toggle: !this.state.toggle});
+  }
+
   render() {
     return (
       <div>
       <h1>Hello World!</h1>
-      <h2>{this.state.toggle ? this.state.myHeading : 'Nothing'}</h2>
+      <h2 onClick={this.toggle}> {this.state.toggle ? this.state.myHeading : 'Nothing'}</h2>
       </div>
     )
   }
