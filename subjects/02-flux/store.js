@@ -1,4 +1,4 @@
-import AltActions from './actions.js';
+import AltAction from './actions.js';
 import alt from './altInstance.js';
 
 /**
@@ -33,21 +33,24 @@ class AltStore {
     // Instance variables defined anywhere in the store will become the state. You can initialize these in the constructor and
     // then update them directly in the prototype methods
   
-
+    this.counter = 0;
     // bindListeners accepts an object where the keys correspond to the method in your
     // StoreModel and the values can either be an array of action symbols or a single action symbol.
     // Remember: alt generates uppercase constants for us to reference
     this.bindListeners({
-    
+      handleIncrement: AltAction.INCREMENT,
+      handleDecrement: AltAction.DECREMENT
     });
   }
 
-  handleIncrement(index) {
-   
+  handleIncrement() {
+    this.counter = this.counter + 1
+    this.emitChange();
   }
 
-  handleDecrement(index) {
- 
+  handleDecrement() {
+    this.counter = this.counter - 1
+    this.emitChange();
   }
 
 

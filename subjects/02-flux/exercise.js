@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
-// import AltStore from './store.js';
-// import AltAction from './actions.js';
+import AltStore from './store.js';
+import AltAction from './actions.js';
 
 const styles = {
   div: {fontSize: '30px', paddingLeft: '40px', marginTop: '50px'},
@@ -27,9 +27,9 @@ class Counter extends React.Component {
     return (
       <div style={styles.div}>
         <h3> I am counter #{this.props.id} </h3>
-        <span  style={styles.span} onClick={this.increment}> + </span> 
-        <span style={styles.span}> {this.state.number} </span> 
-        <span style={styles.span} onClick={this.decrement}> - </span>
+        <span  style={styles.span} onClick={this.props.increment}> + </span> 
+        <span style={styles.span}> {this.props.number} </span> 
+        <span style={styles.span} onClick={this.props.decrement}> - </span>
       </div>
     );
   }
@@ -38,14 +38,41 @@ class Counter extends React.Component {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {};
+    this.state = AltStore.getState();
+  }
+
+  componentDidMount() {
+    AltStore.listen(this.onChange);
+  }
+
+  componentWillUnmount() {
+    AltStore.unlisten(this.onChange);
+  }
+
+  onChange = () => {
+    this.setState({
+      counter: AltStore.getState().counter
+    })
+  }
+
+  increment = () => {
+    AltAction.increment()
+  }
+
+  decrement = () => {
+    AltAction.decrement()
   }
 
   render() {
     return (
       <div>
         <h1> What the flux? </h1>
-        <Counter id="1"/>
+        <pre style={{fontSize: '25px'}}> {JSON.stringify(this.state)}</pre>
+        <Counter 
+        id="1"
+        number={this.state.counter}
+        increment={this.increment}
+        decrement={this.decrement}/>
         <Counter id="2"/>
       </div>
       );

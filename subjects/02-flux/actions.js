@@ -6,7 +6,8 @@ class AltActions {
    */
   increment() {
     this.dispatch();
-
+    console.log('first stop: action')
+    // this is where you talk to the database
     //Also post to any server backend to update recrods in database;
   }
 
