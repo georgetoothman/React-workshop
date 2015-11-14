@@ -65,6 +65,10 @@ class App extends React.Component {
     AltAction.decrement(id)
   }
 
+  toggle = () => {
+    this.setState({toggle: !this.state.toggle});
+  }
+  
   render() {
     let counters = this.state.counters.map(counter => 
       <Counter 
@@ -77,6 +81,7 @@ class App extends React.Component {
       <div>
         <h1> What is flux? </h1>
         <pre style={{fontSize: '25px'}}> {JSON.stringify(this.state)}</pre>
+        <h1 onClick={this.toggle}> {this.state.toggle ? 'Now you see me' : 'Now you dont'} </h1>
           {counters}
       </div>
       );
