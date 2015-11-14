@@ -53,16 +53,16 @@ class App extends React.Component {
 
   onChange = () => {
     this.setState({
-      counter: AltStore.getState().counter
+      counters: AltStore.getState().counters
     })
   }
 
-  increment = () => {
-    AltAction.increment()
+  increment = (id) => {
+    AltAction.increment(id)
   }
 
-  decrement = () => {
-    AltAction.decrement()
+  decrement = (id) => {
+    AltAction.decrement(id)
   }
 
   render() {
@@ -71,8 +71,8 @@ class App extends React.Component {
         id={counter.id} 
         key={counter.id} 
         number={counter.number}
-        increment={this.increment}
-        decrement={this.decrement} />);
+        increment={() => this.increment(counter.id)}
+        decrement={() => this.decrement(counter.id)} />);
     return (
       <div>
         <h1> What is flux? </h1>

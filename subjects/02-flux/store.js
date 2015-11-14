@@ -60,14 +60,20 @@ class AltStore {
     });
   }
 
-  handleIncrement() {
-    this.counter = this.counter + 1
+  handleIncrement(id) {
+    let newCounters = this.counters
+    newCounters[id].number ++;
+    // this.counter = this.counter + 1
+    this.counters = newCounters;
     this.emitChange();
     // this tells the view that the state has been changed
   }
 
-  handleDecrement() {
-    this.counter = this.counter - 1
+  handleDecrement(id) {
+    let newCounters = this.counters
+    newCounters[id].number --;
+    this.counters = newCounters;
+    // this.counter = this.counter - 1
     this.emitChange();
   }
 

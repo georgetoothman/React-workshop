@@ -4,8 +4,8 @@ class AltActions {
   /*
    * @param String topic id to increment with
    */
-  increment() {
-    this.dispatch();
+  increment(id) {
+    this.dispatch(id);
     // sends this to the app store
     console.log('first stop: action')
     // this is where you talk to the database
@@ -15,8 +15,8 @@ class AltActions {
   /*
    * @param String topic id to decrement with
    */
-  decrement() {
-    this.dispatch();
+  decrement(id) {
+    this.dispatch(id);
 
     //Also post to any server backend to update recrods in database;
   }
