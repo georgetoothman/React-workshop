@@ -45,6 +45,8 @@ class App extends React.Component {
     AltStore.listen(this.onChange);
   }
 
+  // listens to change from the store
+
   componentWillUnmount() {
     AltStore.unlisten(this.onChange);
   }
@@ -64,16 +66,18 @@ class App extends React.Component {
   }
 
   render() {
+    let counters = this.state.counters.map(counter => 
+      <Counter 
+        id={counter.id} 
+        key={counter.id} 
+        number={counter.number}
+        increment={this.increment}
+        decrement={this.decrement} />);
     return (
       <div>
-        <h1> What the flux? </h1>
+        <h1> What is flux? </h1>
         <pre style={{fontSize: '25px'}}> {JSON.stringify(this.state)}</pre>
-        <Counter 
-        id="1"
-        number={this.state.counter}
-        increment={this.increment}
-        decrement={this.decrement}/>
-        <Counter id="2"/>
+          {counters}
       </div>
       );
   }

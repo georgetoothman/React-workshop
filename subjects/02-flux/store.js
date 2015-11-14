@@ -33,7 +33,24 @@ class AltStore {
     // Instance variables defined anywhere in the store will become the state. You can initialize these in the constructor and
     // then update them directly in the prototype methods
   
-    this.counter = 0;
+    this.counters = [
+    {
+      id: 0,
+      number: 0
+    },
+    {
+      id: 1,
+      number: 0
+    },
+    {
+      id: 2,
+      number: 0
+    },
+    {
+      id: 3,
+      number: 0
+    }]
+
     // bindListeners accepts an object where the keys correspond to the method in your
     // StoreModel and the values can either be an array of action symbols or a single action symbol.
     // Remember: alt generates uppercase constants for us to reference
@@ -46,6 +63,7 @@ class AltStore {
   handleIncrement() {
     this.counter = this.counter + 1
     this.emitChange();
+    // this tells the view that the state has been changed
   }
 
   handleDecrement() {
