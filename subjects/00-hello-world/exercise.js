@@ -13,10 +13,14 @@ class App extends React.Component {
   }
 
   render() {
+    const obj = { react: 'fun', angular: 'ok', jquery: 'soso'}
+    let {react, angular, jquery} = obj;
+
     return (
       <div>
-      <h1>Hello World!</h1>
-      <h2 onClick={this.toggle}> {this.state.toggle ? this.state.myHeading : 'Nothing'}</h2>
+        <h1>Hello World!</h1>
+        <h2 onClick={this.toggle}> {this.state.toggle ? this.state.myHeading : 'Nothing'}</h2>
+        <h2> ES6 Fun {jquery}</h2>
       </div>
     )
   }
