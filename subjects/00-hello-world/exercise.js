@@ -18,12 +18,15 @@ class App extends React.Component {
     let string = `I am ${react} ${angular}`;
     let array = [1,2,3];
     let arrayTwo = [...array, 4]
-    
+    let arrayStuff = ['a', 'b', 'c', 'd'];
+    let jsx = arrayStuff.map(ele => (<span> {ele} </span>));
+
     return (
       <div>
         <h1>Hello World!</h1>
         <h2 onClick={this.toggle}> {this.state.toggle ? this.state.myHeading : 'Nothing'}</h2>
         <h2> ES6 Fun {arrayTwo}</h2>
+        {jsx}
       </div>
     )
   }
