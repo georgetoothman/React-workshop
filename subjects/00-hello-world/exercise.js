@@ -24,6 +24,7 @@ class App extends React.Component {
     return (
       <div>
         <h1>Hello World!</h1>
+        <h1 style={this.state.toggle ? {backgroundColor: 'red'} : {backgroundColor: 'blue'}}>Hello</h1>
         <h2 onClick={this.toggle}> {this.state.toggle ? this.state.myHeading : 'Nothing'}</h2>
         <h2> ES6 Fun {arrayTwo}</h2>
         {jsx}
